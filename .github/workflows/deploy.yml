@@ -34,7 +34,6 @@ jobs:
         run: npm run build
         working-directory: web
         env:
-          BASE_PATH: /portfolio
           PUBLIC_FORMSPREE_ID: ${{ secrets.PUBLIC_FORMSPREE_ID }}
 
       - name: Add .nojekyll

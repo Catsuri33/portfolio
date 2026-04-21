@@ -112,7 +112,7 @@
 
 	const projects: { title: string; tags: string[]; desc: { fr: string; en: string }; link: string }[] = [
 		{
-			title: 'Portfolio', tags: ['SvelteKit', 'Tailwind'], link: '#projects',
+			title: 'Portfolio', tags: ['SvelteKit', 'Tailwind'], link: 'https://github.com/Catsuri33/portfolio',
 			desc: {
 				fr: 'Ce site — landing page réalisée avec SvelteKit et shadcn-svelte.',
 				en: 'This site — landing page built with SvelteKit and shadcn-svelte.'
@@ -279,7 +279,7 @@
 	</div>
 </section>
 
-<section id="projets" class="bg-muted/40 px-6 py-24">
+<section id="projects" class="bg-muted/40 px-6 py-24">
 	<div class="mx-auto max-w-5xl">
 		<h2 class="reveal mb-4 text-3xl font-bold">{tr.projets.title}</h2>
 		<p class="text-muted-foreground reveal mb-14 max-w-xl delay-100">

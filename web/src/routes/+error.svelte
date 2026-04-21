@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>{$page.status} — Louis Michault</title>
+	<title>{$page.status} - Louis Michault</title>
 </svelte:head>
 
 <header class="bg-background/80 sticky top-0 z-50 flex items-center border-b px-6 py-3 backdrop-blur">

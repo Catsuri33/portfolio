@@ -4,7 +4,7 @@
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import LangToggle from '$lib/components/LangToggle.svelte';
 	import { base } from '$app/paths';
-	import { PUBLIC_FORMSPREE_ID } from '$env/static/public';
+	import { PUBLIC_FORMSPREE_ID, PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 	import { i18n, t } from '$lib/i18n.svelte.js';
 	import { onMount } from 'svelte';
 
@@ -17,9 +17,16 @@
 	let fieldName = $state('');
 	let fieldEmail = $state('');
 	let fieldMessage = $state('');
+	let turnstileToken = $state('');
+	let turnstileError = $state(false);
 
 	async function handleSubmit(e: SubmitEvent) {
 		e.preventDefault();
+		if (!turnstileToken) {
+			turnstileError = true;
+			return;
+		}
+		turnstileError = false;
 		submitting = true;
 		formError = '';
 		try {
@@ -33,6 +40,7 @@
 				fieldName = '';
 				fieldEmail = '';
 				fieldMessage = '';
+				turnstileToken = '';
 			} else {
 				formError = tr.contact.send_error;
 			}
@@ -44,6 +52,12 @@
 	}
 
 	onMount(() => {
+		(window as any).onTurnstileSuccess = (token: string) => {
+			turnstileToken = token;
+			turnstileError = false;
+		};
+		(window as any).onTurnstileExpired = () => { turnstileToken = ''; };
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
@@ -115,8 +129,8 @@
 		{
 			title: 'Portfolio', tags: ['SvelteKit', 'Tailwind'], link: 'https://github.com/Catsuri33/portfolio',
 			desc: {
-				fr: 'Ce site — landing page réalisée avec SvelteKit et shadcn-svelte.',
-				en: 'This site — landing page built with SvelteKit and shadcn-svelte.'
+				fr: 'Ce site - landing page réalisée avec SvelteKit et shadcn-svelte.',
+				en: 'This site - landing page built with SvelteKit and shadcn-svelte.'
 			}
 		},
 		{
@@ -392,8 +406,20 @@
 						bind:value={fieldMessage} required
 						class="border-input bg-background focus:ring-ring disabled:opacity-50 resize-none rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2"></textarea>
 				</div>
-				<button type="submit" disabled={submitting}
-					class="bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-70 flex items-center gap-2 self-end rounded-full px-6 py-2.5 text-sm font-medium transition-colors">
+				<div class="flex flex-col items-center gap-1.5">
+						<div
+							class="cf-turnstile"
+							data-sitekey={PUBLIC_TURNSTILE_SITE_KEY}
+							data-callback="onTurnstileSuccess"
+							data-expired-callback="onTurnstileExpired"
+							data-theme="auto"
+						></div>
+						{#if turnstileError}
+							<p class="text-xs text-red-500">{tr.contact.captcha_error}</p>
+						{/if}
+					</div>
+					<button type="submit" disabled={submitting}
+					class="bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-70 flex items-center gap-2 self-center rounded-full px-6 py-2.5 text-sm font-medium transition-colors">
 					{#if submitting}
 						<svg class="h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
 							<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

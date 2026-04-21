@@ -46,7 +46,8 @@ export const t = {
 			success_desc: 'Je vous répondrai dans les plus brefs délais.',
 			error_title: 'Erreur',
 			network_error: 'Erreur réseau. Vérifiez votre connexion.',
-			send_error: "Erreur lors de l'envoi. Réessayez plus tard."
+			send_error: "Erreur lors de l'envoi. Réessayez plus tard.",
+			captcha_error: 'Veuillez compléter la vérification.'
 		},
 		not_found: {
 			title: 'Page introuvable',
@@ -79,7 +80,8 @@ export const t = {
 			success_desc: "I'll get back to you as soon as possible.",
 			error_title: 'Error',
 			network_error: 'Network error. Please check your connection.',
-			send_error: 'Error sending message. Please try again later.'
+			send_error: 'Error sending message. Please try again later.',
+			captcha_error: 'Please complete the verification.'
 		},
 		not_found: {
 			title: 'Page not found',

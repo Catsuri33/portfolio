@@ -47,6 +47,11 @@ export const t = {
 			error_title: 'Erreur',
 			network_error: 'Erreur réseau. Vérifiez votre connexion.',
 			send_error: "Erreur lors de l'envoi. Réessayez plus tard."
+		},
+		not_found: {
+			title: 'Page introuvable',
+			desc: "La page que vous cherchez n'existe pas ou a été déplacée.",
+			back: "Retour à l'accueil"
 		}
 	},
 	en: {
@@ -75,6 +80,11 @@ export const t = {
 			error_title: 'Error',
 			network_error: 'Network error. Please check your connection.',
 			send_error: 'Error sending message. Please try again later.'
+		},
+		not_found: {
+			title: 'Page not found',
+			desc: "The page you're looking for doesn't exist or has been moved.",
+			back: 'Back to home'
 		}
 	}
 } as const;

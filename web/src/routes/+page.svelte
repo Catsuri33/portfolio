@@ -1,16 +1,15 @@
 <script lang="ts">
-	import * as NavigationMenu from '$lib/components/ui/navigation-menu/index.js';
 	import * as Alert from '$lib/components/ui/alert/index.js';
-	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
-	import LangToggle from '$lib/components/LangToggle.svelte';
+	import Header from '$lib/components/Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 	import { base } from '$app/paths';
 	import { PUBLIC_FORMSPREE_ID, PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 	import { i18n, t } from '$lib/i18n.svelte.js';
+	import { projects } from '$lib/projects';
 	import { onMount } from 'svelte';
 
 	let tr = $derived(t[i18n.current]);
 
-	let mobileMenuOpen = $state(false);
 	let submitting = $state(false);
 	let formSuccess = $state(false);
 	let formError = $state('');
@@ -22,7 +21,7 @@
 
 	async function handleSubmit(e: SubmitEvent) {
 		e.preventDefault();
-		if (!turnstileToken) {
+		if (PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken) {
 			turnstileError = true;
 			return;
 		}
@@ -125,93 +124,26 @@
 		}
 	];
 
-	const projects: { title: string; tags: string[]; desc: { fr: string; en: string }; link: string }[] = [
-		{
-			title: 'Portfolio', tags: ['SvelteKit', 'Tailwind'], link: 'https://github.com/Catsuri33/portfolio',
-			desc: {
-				fr: 'Ce site - landing page réalisée avec SvelteKit et shadcn-svelte.',
-				en: 'This site - landing page built with SvelteKit and shadcn-svelte.'
-			}
-		},
-		{
-			title: 'Homelab', tags: ['K3S', 'Hardware', 'Docker', 'Grafana', 'UptimeKuma'], link: '#projects',
-			desc: {
-				fr: 'Réalisation d\'un homelab personnel. Montage des composants, installation de Kubernetes, déploiement de services (Grafana, UptimeKuma, Gitea…).',
-				en: 'Personal homelab build: hardware assembly, Kubernetes setup, self-hosted services (Grafana, UptimeKuma, Gitea…).'
-			}
-		},
-		{
-			title: 'FrenchCarScrapper', tags: ['Puppeteer', 'Scraping', 'Node.js', 'NPM Package'], link: 'https://github.com/Catsuri33/French-Car-Scraper',
-			desc: {
-				fr: 'Récupérer des informations sur une voiture française à partir de sa plaque d\'immatriculation.',
-				en: 'Retrieve information about a French car from its licence plate number.'
-			}
-		},
-		{
-			title: 'Maktun-Scraper', tags: ['Puppeteer', 'Scraping', 'Node.js'], link: 'https://github.com/Catsuri33/Maktun-Scraper',
-			desc: {
-				fr: 'Récupérer des informations sur sa collection de pièces (nombre, noms, descriptions, années...).',
-				en: 'Retrieve information about a coins collection (number of coins, names, descriptions, years…).'
-			}
-		}
-	];
 </script>
 
-<header
-	class="bg-background/80 sticky top-0 z-50 flex items-center border-b px-6 py-3 backdrop-blur"
->
-	<div class="flex flex-1">
-		<a href="{base}/" class="text-lg font-semibold">Louis Michault</a>
-	</div>
+<svelte:head>
+	<title>Louis Michault - Apprenti Ingénieur DevOps</title>
+	<meta name="description" content="Portfolio de Louis Michault, apprenti ingénieur DevOps chez Tiria et étudiant à Polytech Montpellier. Projets en DevOps, développement web et infrastructure." />
+	<link rel="canonical" href="https://louis-michault.fr/" />
 
-	<div class="hidden md:block">
-		<NavigationMenu.Root>
-			<NavigationMenu.List>
-				<NavigationMenu.Item>
-					<NavigationMenu.Link href="#experience" class="hover:text-primary px-4 py-2 transition-colors"
-						>{tr.nav.experience}</NavigationMenu.Link
-					>
-				</NavigationMenu.Item>
-				<NavigationMenu.Item>
-					<NavigationMenu.Link href="#projects" class="hover:text-primary px-4 py-2 transition-colors"
-						>{tr.nav.projets}</NavigationMenu.Link
-					>
-				</NavigationMenu.Item>
-				<NavigationMenu.Item>
-					<NavigationMenu.Link href="#contact" class="hover:text-primary px-4 py-2 transition-colors"
-						>{tr.nav.contact}</NavigationMenu.Link
-					>
-				</NavigationMenu.Item>
-			</NavigationMenu.List>
-			<NavigationMenu.Viewport />
-		</NavigationMenu.Root>
-	</div>
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://louis-michault.fr/" />
+	<meta property="og:title" content="Louis Michault - Apprenti Ingénieur DevOps" />
+	<meta property="og:description" content="Portfolio de Louis Michault, apprenti ingénieur DevOps chez Tiria et étudiant à Polytech Montpellier." />
+	<meta property="og:locale" content="fr_FR" />
+	<meta property="og:locale:alternate" content="en_US" />
 
-	<div class="flex flex-1 justify-end gap-2">
-		<LangToggle />
-		<ThemeToggle />
-		<button
-			class="hover:bg-muted md:hidden rounded p-2 transition-colors"
-			aria-label="Menu"
-			onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
-		>
-			{#if mobileMenuOpen}
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-			{:else}
-				<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-			{/if}
-		</button>
-	</div>
-	{#if mobileMenuOpen}
-	<nav class="bg-background/95 absolute top-full left-0 right-0 border-b px-6 py-3 md:hidden backdrop-blur">
-		<div class="flex flex-col gap-1">
-			<a href="#experience" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.experience}</a>
-			<a href="#projects" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.projets}</a>
-			<a href="#contact" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.contact}</a>
-		</div>
-	</nav>
-	{/if}
-</header>
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="Louis Michault - Apprenti Ingénieur DevOps" />
+	<meta name="twitter:description" content="Portfolio de Louis Michault, apprenti ingénieur DevOps chez Tiria et étudiant à Polytech Montpellier." />
+</svelte:head>
+
+<Header />
 
 <section class="flex min-h-[90vh] flex-col items-center justify-center gap-6 px-6 text-center">
 	<p class="text-muted-foreground reveal text-sm font-medium uppercase tracking-widest">
@@ -325,18 +257,40 @@
 
 		<div class="grid gap-6 sm:grid-cols-2">
 			{#each projects as project, i}
-				<a
-					href={project.link}
-					target={project.link != '#' ? '_blank' : '_self'}
-					class="reveal bg-background group rounded-2xl border p-6 transition-shadow hover:shadow-md"
+				<div
+					class="reveal bg-background group relative rounded-2xl border p-6 transition-shadow hover:shadow-md"
 					style="transition-delay: {i * 80}ms"
 				>
-					<div class="mb-3 flex flex-wrap gap-2">
-						{#each project.tags as tag}
-							<span class="bg-muted text-muted-foreground rounded-full px-2.5 py-0.5 text-xs">
-								{tag}
-							</span>
-						{/each}
+					<a
+						href="{base}/projets/{project.slug}"
+						class="absolute inset-0 z-0 rounded-2xl"
+						aria-label="{project.title} - {tr.projets.see}"
+					></a>
+
+					<div class="mb-3 flex items-start justify-between gap-2">
+						<div class="flex flex-wrap gap-2">
+							{#each project.tags as tag}
+								<span class="bg-muted text-muted-foreground rounded-full px-2.5 py-0.5 text-xs">
+									{tag}
+								</span>
+							{/each}
+						</div>
+						{#if project.github}
+							<a
+								href={project.github}
+								target="_blank"
+								rel="noopener"
+								aria-label={tr.projets.github}
+								title={tr.projets.github}
+								class="text-muted-foreground hover:text-foreground relative z-10 shrink-0 transition-colors"
+							>
+								<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"
+									><path
+										d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"
+									/></svg
+								>
+							</a>
+						{/if}
 					</div>
 					<h3 class="group-hover:text-primary mb-2 font-semibold transition-colors">
 						{project.title}
@@ -357,7 +311,7 @@
 							stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg
 						>
 					</div>
-				</a>
+				</div>
 			{/each}
 		</div>
 	</div>
@@ -406,7 +360,8 @@
 						bind:value={fieldMessage} required
 						class="border-input bg-background focus:ring-ring disabled:opacity-50 resize-none rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2"></textarea>
 				</div>
-				<div class="flex flex-col items-center gap-1.5">
+				{#if PUBLIC_TURNSTILE_SITE_KEY}
+					<div class="flex flex-col items-center gap-1.5">
 						<div
 							class="cf-turnstile"
 							data-sitekey={PUBLIC_TURNSTILE_SITE_KEY}
@@ -418,6 +373,7 @@
 							<p class="text-xs text-red-500">{tr.contact.captcha_error}</p>
 						{/if}
 					</div>
+				{/if}
 					<button type="submit" disabled={submitting}
 					class="bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-70 flex items-center gap-2 self-center rounded-full px-6 py-2.5 text-sm font-medium transition-colors">
 					{#if submitting}
@@ -491,8 +447,4 @@
 	</div>
 </section>
 
-<footer class="border-t px-6 py-6 text-center">
-	<p class="text-muted-foreground text-sm">
-		© {new Date().getFullYear()} Louis Michault
-	</p>
-</footer>
+<Footer />

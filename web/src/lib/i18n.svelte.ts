@@ -33,7 +33,10 @@ export const t = {
 		projets: {
 			title: 'Projets',
 			subtitle: 'Une sélection de réalisations personnelles et professionnelles.',
-			see: 'Voir le projet'
+			see: "Lire l'article",
+			github: 'Voir sur GitHub',
+			back: 'Retour aux projets',
+			not_found: "Cet article n'existe pas."
 		},
 		contact: {
 			title: 'Contact',
@@ -67,7 +70,10 @@ export const t = {
 		projets: {
 			title: 'Projects',
 			subtitle: 'A selection of personal and professional work.',
-			see: 'View project'
+			see: 'Read the article',
+			github: 'View on GitHub',
+			back: 'Back to projects',
+			not_found: "This article doesn't exist."
 		},
 		contact: {
 			title: 'Contact',

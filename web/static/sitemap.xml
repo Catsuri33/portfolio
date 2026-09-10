@@ -9,4 +9,28 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/"/>
   </url>
+  <url>
+    <loc>https://louis-michault.fr/projets/portfolio</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/projets/homelab</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/projets/french-car-scraper</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/projets/maktun-scraper</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

@@ -47,6 +47,7 @@
 	},
 	"dependencies": {
 		"@types/nodemailer": "^8.0.0",
+		"marked": "^18.0.12",
 		"nodemailer": "^8.0.5"
 	}
 }

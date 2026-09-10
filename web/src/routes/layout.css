@@ -142,3 +142,67 @@
 .delay-100 { transition-delay: 100ms; }
 .delay-200 { transition-delay: 200ms; }
 .delay-300 { transition-delay: 300ms; }
+
+.markdown-content {
+	line-height: 1.75;
+}
+
+.markdown-content > * + * {
+	margin-top: 1.25em;
+}
+
+.markdown-content h2 {
+	@apply text-xl font-semibold;
+	margin-top: 2em;
+}
+
+.markdown-content h3 {
+	@apply text-lg font-semibold;
+	margin-top: 1.75em;
+}
+
+.markdown-content p,
+.markdown-content li {
+	@apply text-muted-foreground;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+	padding-left: 1.5em;
+}
+
+.markdown-content ul {
+	list-style: disc;
+}
+
+.markdown-content ol {
+	list-style: decimal;
+}
+
+.markdown-content li + li {
+	margin-top: 0.4em;
+}
+
+.markdown-content a {
+	@apply text-primary underline underline-offset-4;
+}
+
+.markdown-content strong {
+	@apply text-foreground font-semibold;
+}
+
+.markdown-content code {
+	@apply bg-muted rounded px-1.5 py-0.5 text-sm;
+}
+
+.markdown-content pre {
+	@apply bg-muted overflow-x-auto rounded-xl p-4 text-sm;
+}
+
+.markdown-content pre code {
+	@apply bg-transparent p-0;
+}
+
+.markdown-content blockquote {
+	@apply border-primary text-muted-foreground border-l-2 pl-4 italic;
+}

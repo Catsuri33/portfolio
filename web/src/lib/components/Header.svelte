@@ -30,6 +30,16 @@
 					>
 				</NavigationMenu.Item>
 				<NavigationMenu.Item>
+					<NavigationMenu.Link href="{base}/#certifications" class="hover:text-primary px-4 py-2 transition-colors"
+						>{tr.nav.certifications}</NavigationMenu.Link
+					>
+				</NavigationMenu.Item>
+				<NavigationMenu.Item>
+					<NavigationMenu.Link href="{base}/#cv" class="hover:text-primary px-4 py-2 transition-colors"
+						>{tr.nav.cv}</NavigationMenu.Link
+					>
+				</NavigationMenu.Item>
+				<NavigationMenu.Item>
 					<NavigationMenu.Link href="{base}/#contact" class="hover:text-primary px-4 py-2 transition-colors"
 						>{tr.nav.contact}</NavigationMenu.Link
 					>
@@ -59,6 +69,8 @@
 		<div class="flex flex-col gap-1">
 			<a href="{base}/#experience" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.experience}</a>
 			<a href="{base}/#projects" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.projets}</a>
+			<a href="{base}/#certifications" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.certifications}</a>
+			<a href="{base}/#cv" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.cv}</a>
 			<a href="{base}/#contact" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.contact}</a>
 		</div>
 	</nav>

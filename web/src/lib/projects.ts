@@ -27,6 +27,15 @@ export const projects: Project[] = [
 		}
 	},
 	{
+		slug: 'omni',
+		title: 'Omni',
+		tags: ['TypeScript', 'React', 'Kubernetes', 'GitLab CI/CD'],
+		desc: {
+			fr: 'Projet d\'école : une suite collaborative auto-hébergeable et souveraine, comparable à Proton ou Google Workspace.',
+			en: 'School project: a self-hostable, sovereign collaborative suite similar to Proton or Google Workspace.'
+		}
+	},
+	{
 		slug: 'french-car-scraper',
 		title: 'FrenchCarScrapper',
 		tags: ['Puppeteer', 'Scraping', 'Node.js', 'NPM Package'],

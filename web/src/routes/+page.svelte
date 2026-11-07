@@ -6,9 +6,19 @@
 	import { PUBLIC_FORMSPREE_ID, PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 	import { i18n, t } from '$lib/i18n.svelte.js';
 	import { projects } from '$lib/projects';
+	import { certifications, type Certification } from '$lib/certifications';
 	import { onMount } from 'svelte';
 
 	let tr = $derived(t[i18n.current]);
+	// UTC: ISO dates parse as UTC midnight, so the visitor's timezone must not shift the month
+	let issuedFormat = $derived(
+		new Intl.DateTimeFormat(i18n.current, { month: 'long', year: 'numeric', timeZone: 'UTC' })
+	);
+
+	const certFilters = ['all', 'course', 'certification'] as const;
+	let certFilter = $state<(typeof certFilters)[number]>('all');
+	const matchesCertFilter = (kind: Certification['kind']) =>
+		certFilter === 'all' || kind === certFilter;
 
 	let submitting = $state(false);
 	let formSuccess = $state(false);
@@ -314,6 +324,109 @@
 				</div>
 			{/each}
 		</div>
+	</div>
+</section>
+
+<section id="certifications" class="px-6 py-24">
+	<div class="mx-auto max-w-5xl">
+		<h2 class="reveal mb-4 text-3xl font-bold">{tr.certifications.title}</h2>
+		<p class="text-muted-foreground reveal mb-6 max-w-xl delay-100">
+			{tr.certifications.subtitle}
+		</p>
+
+		<div class="reveal mb-8 flex flex-wrap gap-2 delay-100">
+			{#each certFilters as filter (filter)}
+				<button
+					type="button"
+					aria-pressed={certFilter === filter}
+					onclick={() => (certFilter = filter)}
+					class="rounded-full px-3 py-1 text-sm transition-colors {certFilter === filter
+						? 'bg-primary text-primary-foreground'
+						: 'bg-muted text-muted-foreground hover:text-foreground'}"
+				>
+					{tr.certifications.filters[filter]}
+				</button>
+			{/each}
+		</div>
+
+		{#if !certifications.some((cert) => matchesCertFilter(cert.kind))}
+			<p class="text-muted-foreground text-sm">{tr.certifications.empty}</p>
+		{/if}
+
+		<div class="grid gap-6 sm:grid-cols-2">
+			<!-- Filtered cards stay in the DOM: the reveal observer only tracks elements present on mount -->
+			{#each certifications as cert, i (cert.url)}
+				<div
+					hidden={!matchesCertFilter(cert.kind)}
+					class="reveal bg-background group relative flex items-start gap-5 rounded-2xl border p-6 transition-shadow hover:shadow-md"
+					style="transition-delay: {i * 80}ms"
+				>
+					<a
+						href={cert.url}
+						target="_blank"
+						rel="noopener"
+						class="absolute inset-0 z-0 rounded-2xl"
+						aria-label="{cert.title} - {tr.certifications.verify}"
+					></a>
+
+					<img
+						src="{base}/{cert.badge}"
+						alt=""
+						width="96"
+						height="96"
+						loading="lazy"
+						class="h-20 w-20 shrink-0 sm:h-24 sm:w-24"
+					/>
+					<div class="min-w-0">
+						<span class="bg-muted text-muted-foreground rounded-full px-2.5 py-0.5 text-xs">
+							{tr.certifications.kinds[cert.kind]}
+						</span>
+						<h3 class="group-hover:text-primary mt-3 mb-1 font-semibold transition-colors">
+							{cert.title}
+						</h3>
+						<p class="text-muted-foreground text-sm">
+							{cert.issuer} · {issuedFormat.format(new Date(cert.issued))}
+						</p>
+						<p class="text-primary mt-3 text-xs font-medium">{tr.certifications.verify} ↗</p>
+					</div>
+				</div>
+			{/each}
+		</div>
+	</div>
+</section>
+
+<section id="cv" class="bg-muted/40 px-6 py-24">
+	<div class="mx-auto max-w-3xl">
+		<h2 class="reveal mb-4 text-3xl font-bold">{tr.cv.title}</h2>
+		<p class="text-muted-foreground reveal mb-6 max-w-xl delay-100">{tr.cv.subtitle}</p>
+
+		<div class="reveal mb-8 flex flex-wrap gap-4 delay-100">
+			<a
+				href="{base}/cv/Louis_Michault_Resume.pdf"
+				download
+				class="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 py-2.5 text-sm font-medium transition-colors"
+			>
+				{tr.cv.download}
+			</a>
+			<a
+				href="{base}/cv/Louis_Michault_Resume.pdf"
+				target="_blank"
+				rel="noopener"
+				class="border-border hover:bg-muted rounded-full border px-6 py-2.5 text-sm font-medium transition-colors"
+			>
+				{tr.cv.open} ↗
+			</a>
+		</div>
+
+		<!-- Hidden on small screens, where embedded PDFs are unreliable: the buttons above remain -->
+		<object
+			data="{base}/cv/Louis_Michault_Resume.pdf#view=FitH"
+			type="application/pdf"
+			aria-label={tr.cv.viewer_label}
+			class="reveal bg-background hidden aspect-[210/297] w-full rounded-2xl border md:block"
+		>
+			<p class="text-muted-foreground p-6 text-sm">{tr.cv.fallback}</p>
+		</object>
 	</div>
 </section>
 

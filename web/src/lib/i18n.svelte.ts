@@ -22,7 +22,7 @@ export const i18n = createI18n();
 
 export const t = {
 	fr: {
-		nav: { experience: 'Parcours', projets: 'Projets', contact: 'Contact' },
+		nav: { experience: 'Parcours', projets: 'Projets', certifications: 'Formations', cv: 'CV', contact: 'Contact' },
 		hero: {
 			role: 'Apprenti Ingénieur DevOps',
 			desc: 'Étudiant en apprentissage à Polytech Montpellier et employé chez Tiria',
@@ -37,6 +37,22 @@ export const t = {
 			github: 'Voir sur GitHub',
 			back: 'Retour aux projets',
 			not_found: "Cet article n'existe pas."
+		},
+		certifications: {
+			title: 'Formations & certifications',
+			subtitle: 'Les formations que j\'ai validées, vérifiables sur Credly.',
+			verify: 'Vérifier sur Credly',
+			kinds: { course: 'Cours', certification: 'Certification' },
+			filters: { all: 'Tous', course: 'Cours', certification: 'Certifications' },
+			empty: 'Aucune certification pour le moment.'
+		},
+		cv: {
+			title: 'CV',
+			subtitle: 'Mon CV en anglais, à consulter ici ou à télécharger.',
+			download: 'Télécharger le PDF',
+			open: 'Ouvrir le PDF',
+			viewer_label: 'Aperçu du CV de Louis Michault',
+			fallback: "Votre navigateur ne peut pas afficher le PDF ici. Utilisez les boutons ci-dessus pour l'ouvrir ou le télécharger."
 		},
 		contact: {
 			title: 'Contact',
@@ -59,7 +75,7 @@ export const t = {
 		}
 	},
 	en: {
-		nav: { experience: 'Career', projets: 'Projects', contact: 'Contact' },
+		nav: { experience: 'Career', projets: 'Projects', certifications: 'Training', cv: 'Resume', contact: 'Contact' },
 		hero: {
 			role: 'DevOps Engineering Apprentice',
 			desc: 'Apprentice student at Polytech Montpellier, employed at Tiria',
@@ -74,6 +90,22 @@ export const t = {
 			github: 'View on GitHub',
 			back: 'Back to projects',
 			not_found: "This article doesn't exist."
+		},
+		certifications: {
+			title: 'Training & certifications',
+			subtitle: 'The courses I have completed, verifiable on Credly.',
+			verify: 'Verify on Credly',
+			kinds: { course: 'Course', certification: 'Certification' },
+			filters: { all: 'All', course: 'Courses', certification: 'Certifications' },
+			empty: 'No certifications yet.'
+		},
+		cv: {
+			title: 'Resume',
+			subtitle: 'View my resume here or download it.',
+			download: 'Download PDF',
+			open: 'Open PDF',
+			viewer_label: "Preview of Louis Michault's resume",
+			fallback: "Your browser can't display the PDF here. Use the buttons above to open or download it."
 		},
 		contact: {
 			title: 'Contact',

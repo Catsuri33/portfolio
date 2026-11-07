@@ -2,7 +2,6 @@
 	import * as NavigationMenu from '$lib/components/ui/navigation-menu/index.js';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import LangToggle from '$lib/components/LangToggle.svelte';
-	import { base } from '$app/paths';
 	import { i18n, t } from '$lib/i18n.svelte.js';
 
 	let tr = $derived(t[i18n.current]);
@@ -13,34 +12,34 @@
 	class="bg-background/80 sticky top-0 z-50 flex items-center border-b px-6 py-3 backdrop-blur"
 >
 	<div class="flex flex-1">
-		<a href="{base}/" class="text-lg font-semibold">Louis Michault</a>
+		<a href={i18n.path('/')} class="text-lg font-semibold">Louis Michault</a>
 	</div>
 
 	<div class="hidden md:block">
 		<NavigationMenu.Root>
 			<NavigationMenu.List>
 				<NavigationMenu.Item>
-					<NavigationMenu.Link href="{base}/#experience" class="hover:text-primary px-4 py-2 transition-colors"
+					<NavigationMenu.Link href={i18n.path('/#experience')} class="hover:text-primary px-4 py-2 transition-colors"
 						>{tr.nav.experience}</NavigationMenu.Link
 					>
 				</NavigationMenu.Item>
 				<NavigationMenu.Item>
-					<NavigationMenu.Link href="{base}/#projects" class="hover:text-primary px-4 py-2 transition-colors"
+					<NavigationMenu.Link href={i18n.path('/#projects')} class="hover:text-primary px-4 py-2 transition-colors"
 						>{tr.nav.projets}</NavigationMenu.Link
 					>
 				</NavigationMenu.Item>
 				<NavigationMenu.Item>
-					<NavigationMenu.Link href="{base}/#certifications" class="hover:text-primary px-4 py-2 transition-colors"
+					<NavigationMenu.Link href={i18n.path('/#certifications')} class="hover:text-primary px-4 py-2 transition-colors"
 						>{tr.nav.certifications}</NavigationMenu.Link
 					>
 				</NavigationMenu.Item>
 				<NavigationMenu.Item>
-					<NavigationMenu.Link href="{base}/#cv" class="hover:text-primary px-4 py-2 transition-colors"
+					<NavigationMenu.Link href={i18n.path('/#cv')} class="hover:text-primary px-4 py-2 transition-colors"
 						>{tr.nav.cv}</NavigationMenu.Link
 					>
 				</NavigationMenu.Item>
 				<NavigationMenu.Item>
-					<NavigationMenu.Link href="{base}/#contact" class="hover:text-primary px-4 py-2 transition-colors"
+					<NavigationMenu.Link href={i18n.path('/#contact')} class="hover:text-primary px-4 py-2 transition-colors"
 						>{tr.nav.contact}</NavigationMenu.Link
 					>
 				</NavigationMenu.Item>
@@ -67,11 +66,11 @@
 	{#if mobileMenuOpen}
 	<nav class="bg-background/95 absolute top-full left-0 right-0 border-b px-6 py-3 md:hidden backdrop-blur">
 		<div class="flex flex-col gap-1">
-			<a href="{base}/#experience" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.experience}</a>
-			<a href="{base}/#projects" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.projets}</a>
-			<a href="{base}/#certifications" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.certifications}</a>
-			<a href="{base}/#cv" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.cv}</a>
-			<a href="{base}/#contact" class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.contact}</a>
+			<a href={i18n.path('/#experience')} class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.experience}</a>
+			<a href={i18n.path('/#projects')} class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.projets}</a>
+			<a href={i18n.path('/#certifications')} class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.certifications}</a>
+			<a href={i18n.path('/#cv')} class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.cv}</a>
+			<a href={i18n.path('/#contact')} class="hover:text-primary py-2 text-sm transition-colors" onclick={() => (mobileMenuOpen = false)}>{tr.nav.contact}</a>
 		</div>
 	</nav>
 	{/if}

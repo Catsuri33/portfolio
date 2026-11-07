@@ -9,6 +9,8 @@
 	import { certifications, type Certification } from '$lib/certifications';
 	import { onMount } from 'svelte';
 
+	type Localized = { fr: string; en: string };
+
 	let tr = $derived(t[i18n.current]);
 	// UTC: ISO dates parse as UTC midnight, so the visitor's timezone must not shift the month
 	let issuedFormat = $derived(
@@ -82,51 +84,72 @@
 		return () => observer.disconnect();
 	});
 
-	const experiences: { type: string; date: string; title: string; org: string; desc: { fr: string; en: string }; logo?: string }[] = [
+	const experiences: { type: string; date: Localized; title: Localized; org: Localized; desc: Localized; logo?: string }[] = [
 		{
-			type: 'pro', date: 'décembre 2018', title: 'Stagiaire', org: 'CompuGroup Medical France', logo: '/logos/cgm.jpeg',
+			type: 'pro', logo: '/logos/cgm.jpeg',
+			date: { fr: 'décembre 2018', en: 'December 2018' },
+			title: { fr: 'Stagiaire', en: 'Intern' },
+			org: { fr: 'CompuGroup Medical France', en: 'CompuGroup Medical France' },
 			desc: {
 				fr: 'Stage de troisième, découverte du développement informatique et réalisation d\'un jeu du "pendu" et un "mastermind" en C#.',
 				en: 'Third-grade internship, introduction to software development: built a "Hangman" and a "Mastermind" game in C#.'
 			}
 		},
 		{
-			type: 'pro', date: 'juillet 2022', title: 'Contractuel', org: 'Direction générale des Finances Publiques', logo: '/logos/dgfip.jpeg',
+			type: 'pro', logo: '/logos/dgfip.jpeg',
+			date: { fr: 'juillet 2022', en: 'July 2022' },
+			title: { fr: 'Contractuel', en: 'Contract employee' },
+			org: { fr: 'Direction générale des Finances Publiques', en: 'French Public Finances Directorate' },
 			desc: {
 				fr: 'Emploi saisonnier dans une Trésorerie des Finances Publiques. Comptabilité et administratif.',
 				en: 'Seasonal position at a public treasury office. Accounting and administrative tasks.'
 			}
 		},
 		{
-			type: 'pro', date: 'juillet 2023', title: 'Contractuel', org: 'Direction générale des Finances Publiques', logo: '/logos/dgfip.jpeg',
+			type: 'pro', logo: '/logos/dgfip.jpeg',
+			date: { fr: 'juillet 2023', en: 'July 2023' },
+			title: { fr: 'Contractuel', en: 'Contract employee' },
+			org: { fr: 'Direction générale des Finances Publiques', en: 'French Public Finances Directorate' },
 			desc: {
 				fr: 'Emploi saisonnier dans une Trésorerie des Finances Publiques. Comptabilité et administratif.',
 				en: 'Seasonal position at a public treasury office. Accounting and administrative tasks.'
 			}
 		},
 		{
-			type: 'edu', date: '2022 – 2025', title: 'BUT Informatique', org: 'IUT de Bordeaux', logo: '/logos/iut_bdx.jpeg',
+			type: 'edu', logo: '/logos/iut_bdx.jpeg',
+			date: { fr: '2022 – 2025', en: '2022 – 2025' },
+			title: { fr: 'BUT Informatique', en: '3-Year University Degree in Computer Science' },
+			org: { fr: 'IUT de Bordeaux', en: 'University Institute of Technology (IUT) of Bordeaux' },
 			desc: {
 				fr: 'Parcours réalisation d\'applications : conception, développement, validation.',
 				en: 'Software development track: design, development and testing of applications.'
 			}
 		},
 		{
-			type: 'pro', date: '2024 – 2025', title: 'Apprenti Développeur Web', org: 'Tiria', logo: '/logos/tiria.jpeg',
+			type: 'pro', logo: '/logos/tiria.jpeg',
+			date: { fr: '2024 – 2025', en: '2024 – 2025' },
+			title: { fr: 'Apprenti Développeur Web', en: 'Web Developer Apprentice' },
+			org: { fr: 'Tiria', en: 'Tiria' },
 			desc: {
 				fr: 'Réalisation d\'applications web et support.',
 				en: 'Web application development and technical support.'
 			}
 		},
 		{
-			type: 'edu', date: '2025 – 2028', title: 'Diplôme d\'Ingénieur DevOps en alternance', org: 'Polytech Montpellier', logo: '/logos/polytech_montpellier.jpeg',
+			type: 'edu', logo: '/logos/polytech_montpellier.jpeg',
+			date: { fr: '2025 – 2028', en: '2025 – 2028' },
+			title: { fr: 'Diplôme d\'Ingénieur DevOps en alternance', en: 'Cloud DevOps Engineering Degree (apprenticeship)' },
+			org: { fr: 'Polytech Montpellier', en: 'Polytech Montpellier' },
 			desc: {
 				fr: 'Développement informatique et exploitation opérationnelle.',
 				en: 'Software engineering and operational deployment.'
 			}
 		},
 		{
-			type: 'pro', date: '2025 – présent', title: 'Apprenti Ingénieur DevOps', org: 'Tiria', logo: '/logos/tiria.jpeg',
+			type: 'pro', logo: '/logos/tiria.jpeg',
+			date: { fr: '2025 – présent', en: '2025 – present' },
+			title: { fr: 'Apprenti Ingénieur DevOps', en: 'DevOps Engineer Apprentice' },
+			org: { fr: 'Tiria', en: 'Tiria' },
 			desc: {
 				fr: 'Conception, réalisation et déploiement de progiciels web sur mesure.',
 				en: 'Design, development and deployment of custom web software.'
@@ -137,20 +160,19 @@
 </script>
 
 <svelte:head>
-	<title>Louis Michault - Apprenti Ingénieur DevOps</title>
-	<meta name="description" content="Portfolio de Louis Michault, apprenti ingénieur DevOps chez Tiria et étudiant à Polytech Montpellier. Projets en DevOps, développement web et infrastructure." />
-	<link rel="canonical" href="https://louis-michault.fr/" />
+	<title>{tr.meta.title}</title>
+	<meta name="description" content={tr.meta.description} />
 
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://louis-michault.fr/" />
-	<meta property="og:title" content="Louis Michault - Apprenti Ingénieur DevOps" />
-	<meta property="og:description" content="Portfolio de Louis Michault, apprenti ingénieur DevOps chez Tiria et étudiant à Polytech Montpellier." />
-	<meta property="og:locale" content="fr_FR" />
-	<meta property="og:locale:alternate" content="en_US" />
+	<meta property="og:url" content="https://louis-michault.fr{i18n.path('/')}" />
+	<meta property="og:title" content={tr.meta.title} />
+	<meta property="og:description" content={tr.meta.description} />
+	<meta property="og:locale" content={i18n.current === 'fr' ? 'fr_FR' : 'en_US'} />
+	<meta property="og:locale:alternate" content={i18n.current === 'fr' ? 'en_US' : 'fr_FR'} />
 
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="Louis Michault - Apprenti Ingénieur DevOps" />
-	<meta name="twitter:description" content="Portfolio de Louis Michault, apprenti ingénieur DevOps chez Tiria et étudiant à Polytech Montpellier." />
+	<meta name="twitter:title" content={tr.meta.title} />
+	<meta name="twitter:description" content={tr.meta.description} />
 </svelte:head>
 
 <Header />
@@ -179,7 +201,7 @@
 	</div>
 </section>
 
-<section id="experience" class="px-6 py-24">
+<section id="experience" data-nosnippet class="px-6 py-24">
 	<div class="mx-auto max-w-3xl">
 		<h2 class="reveal mb-16 text-3xl font-bold">{tr.experience.title}</h2>
 
@@ -197,7 +219,7 @@
 						{#if item.logo}
 							<img
 								src={item.logo}
-								alt={item.org}
+								alt={item.org[i18n.current]}
 								class="mb-2 h-8 w-auto object-contain {i % 2 === 0 ? 'md:ml-auto' : ''}"
 								onerror={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
 							/>
@@ -205,10 +227,10 @@
 						<span
 							class="text-muted-foreground mb-1 block text-xs font-semibold uppercase tracking-wide"
 						>
-							{item.date}
+							{item.date[i18n.current]}
 						</span>
-						<h3 class="font-semibold">{item.title}</h3>
-						<p class="text-primary text-sm font-medium">{item.org}</p>
+						<h3 class="font-semibold">{item.title[i18n.current]}</h3>
+						<p class="text-primary text-sm font-medium">{item.org[i18n.current]}</p>
 						<p class="text-muted-foreground mt-1 text-sm">{item.desc[i18n.current]}</p>
 					</div>
 
@@ -272,7 +294,7 @@
 					style="transition-delay: {i * 80}ms"
 				>
 					<a
-						href="{base}/projets/{project.slug}"
+						href={i18n.path(`/projects/${project.slug}`)}
 						class="absolute inset-0 z-0 rounded-2xl"
 						aria-label="{project.title} - {tr.projets.see}"
 					></a>

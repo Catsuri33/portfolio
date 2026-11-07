@@ -8,7 +8,8 @@ const config = {
 	kit: {
 		adapter: adapter({ fallback: '404.html' }),
 		paths: {
-			base: process.env.BASE_PATH ?? ''
+			base: process.env.BASE_PATH ?? '',
+			relative: false
 		}
 	}
 };

@@ -1,27 +1,39 @@
+import { base } from '$app/paths';
+import { page } from '$app/state';
+
 export type Lang = 'fr' | 'en';
 
-function createI18n() {
-	let current = $state<Lang>('fr');
+const EN_PREFIX = /^\/en(?=\/|$)/;
 
-	function set(lang: Lang) {
-		current = lang;
-		localStorage.setItem('lang', lang);
-		document.documentElement.setAttribute('lang', lang);
-	}
-
-	function init() {
-		const stored = (localStorage.getItem('lang') as Lang) ?? 'fr';
-		current = stored;
-		document.documentElement.setAttribute('lang', stored);
-	}
-
-	return { get current() { return current; }, set, init };
+export function langFromPath(pathname: string): Lang {
+	return EN_PREFIX.test(pathname.slice(base.length)) ? 'en' : 'fr';
 }
 
-export const i18n = createI18n();
+function localize(target: string, lang: Lang) {
+	return lang === 'fr' ? base + target : `${base}/en${target}`;
+}
+
+// The URL is the source of truth so that each language is prerendered at its own address
+export const i18n = {
+	get current() {
+		return langFromPath(page.url.pathname);
+	},
+	// Localized link to a site path, such as '/#contact' or '/projects/homelab'
+	path(target: string) {
+		return localize(target, langFromPath(page.url.pathname));
+	},
+	// Current page in the given language
+	alternate(lang: Lang) {
+		return localize(page.url.pathname.slice(base.length).replace(EN_PREFIX, '') || '/', lang);
+	}
+};
 
 export const t = {
 	fr: {
+		meta: {
+			title: 'Louis Michault - Apprenti Ingénieur DevOps',
+			description: 'Portfolio de Louis Michault, apprenti ingénieur DevOps : projets Kubernetes, infrastructure et développement web, formations et CV.'
+		},
 		nav: { experience: 'Parcours', projets: 'Projets', certifications: 'Formations', cv: 'CV', contact: 'Contact' },
 		hero: {
 			role: 'Apprenti Ingénieur DevOps',
@@ -75,6 +87,10 @@ export const t = {
 		}
 	},
 	en: {
+		meta: {
+			title: 'Louis Michault - DevOps Engineering Apprentice',
+			description: 'Portfolio of Louis Michault, DevOps engineering apprentice: Kubernetes projects, infrastructure and web development, training and resume.'
+		},
 		nav: { experience: 'Career', projets: 'Projects', certifications: 'Training', cv: 'Resume', contact: 'Contact' },
 		hero: {
 			role: 'DevOps Engineering Apprentice',

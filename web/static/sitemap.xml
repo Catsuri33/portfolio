@@ -7,36 +7,106 @@
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/"/>
   </url>
   <url>
-    <loc>https://louis-michault.fr/projets/portfolio</loc>
-    <lastmod>2026-09-10</lastmod>
+    <loc>https://louis-michault.fr/en/</loc>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/"/>
   </url>
   <url>
-    <loc>https://louis-michault.fr/projets/homelab</loc>
-    <lastmod>2026-09-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://louis-michault.fr/projets/omni</loc>
+    <loc>https://louis-michault.fr/projects/portfolio</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/portfolio"/>
   </url>
   <url>
-    <loc>https://louis-michault.fr/projets/french-car-scraper</loc>
-    <lastmod>2026-09-10</lastmod>
+    <loc>https://louis-michault.fr/en/projects/portfolio</loc>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/portfolio"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/portfolio"/>
   </url>
   <url>
-    <loc>https://louis-michault.fr/projets/maktun-scraper</loc>
-    <lastmod>2026-09-10</lastmod>
+    <loc>https://louis-michault.fr/projects/homelab</loc>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/homelab"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/homelab"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/homelab"/>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/en/projects/homelab</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/homelab"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/homelab"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/homelab"/>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/projects/omni</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/omni"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/omni"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/omni"/>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/en/projects/omni</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/omni"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/omni"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/omni"/>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/projects/french-car-scraper</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/french-car-scraper"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/french-car-scraper"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/french-car-scraper"/>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/en/projects/french-car-scraper</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/french-car-scraper"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/french-car-scraper"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/french-car-scraper"/>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/projects/maktun-scraper</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/maktun-scraper"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/maktun-scraper"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/maktun-scraper"/>
+  </url>
+  <url>
+    <loc>https://louis-michault.fr/en/projects/maktun-scraper</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://louis-michault.fr/projects/maktun-scraper"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://louis-michault.fr/en/projects/maktun-scraper"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://louis-michault.fr/projects/maktun-scraper"/>
   </url>
 </urlset>

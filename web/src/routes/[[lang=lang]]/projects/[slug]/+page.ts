@@ -11,7 +11,7 @@ const rawContent = import.meta.glob('/src/lib/content/projects/*.md', {
 export const prerender = true;
 
 export function entries() {
-	return projects.map((project) => ({ slug: project.slug }));
+	return projects.flatMap(({ slug }) => [{ slug }, { lang: 'en', slug }]);
 }
 
 export const load: PageLoad = ({ params }) => {

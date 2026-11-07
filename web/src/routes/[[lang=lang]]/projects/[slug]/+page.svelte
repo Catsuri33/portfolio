@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { base } from '$app/paths';
 	import { i18n, t } from '$lib/i18n.svelte.js';
 	import { renderMarkdown } from '$lib/markdown.js';
 	import type { PageData } from './$types';
@@ -15,10 +14,9 @@
 <svelte:head>
 	<title>{data.project.title} - Louis Michault</title>
 	<meta name="description" content={data.project.desc[i18n.current]} />
-	<link rel="canonical" href="https://louis-michault.fr/projets/{data.project.slug}" />
 
 	<meta property="og:type" content="article" />
-	<meta property="og:url" content="https://louis-michault.fr/projets/{data.project.slug}" />
+	<meta property="og:url" content="https://louis-michault.fr{i18n.path(`/projects/${data.project.slug}`)}" />
 	<meta property="og:title" content="{data.project.title} - Louis Michault" />
 	<meta property="og:description" content={data.project.desc[i18n.current]} />
 
@@ -32,7 +30,7 @@
 <main class="px-6 py-16">
 	<article class="mx-auto max-w-3xl">
 		<a
-			href="{base}/#projects"
+			href={i18n.path('/#projects')}
 			class="text-muted-foreground hover:text-foreground mb-8 inline-flex items-center gap-1.5 text-sm transition-colors"
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>

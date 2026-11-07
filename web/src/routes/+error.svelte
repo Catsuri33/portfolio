@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { base } from '$app/paths';
 	import { i18n, t } from '$lib/i18n.svelte.js';
 	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import LangToggle from '$lib/components/LangToggle.svelte';
@@ -14,7 +13,7 @@
 
 <header class="bg-background/80 sticky top-0 z-50 flex items-center border-b px-6 py-3 backdrop-blur">
 	<div class="flex flex-1">
-		<a href="{base}/" class="text-lg font-semibold">Louis Michault</a>
+		<a href={i18n.path('/')} class="text-lg font-semibold">Louis Michault</a>
 	</div>
 	<div class="flex gap-2">
 		<LangToggle />
@@ -33,7 +32,7 @@
 		{tr.not_found.desc}
 	</p>
 	<a
-		href="{base}/"
+		href={i18n.path('/')}
 		class="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6 py-2.5 text-sm font-medium transition-colors"
 	>
 		{tr.not_found.back}

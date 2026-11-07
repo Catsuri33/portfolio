@@ -1,5 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { projects } from '$lib/projects';
+import { projects } from '#lib/projects.js';
 import type { PageLoad } from './$types';
 
 const rawContent = import.meta.glob('/src/lib/content/projects/*.md', {

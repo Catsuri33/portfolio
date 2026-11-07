@@ -26,7 +26,13 @@ function createTheme() {
 		});
 	}
 
-	return { get current() { return current; }, set, init };
+	return {
+		get current() {
+			return current;
+		},
+		set,
+		init
+	};
 }
 
 export const theme = createTheme();

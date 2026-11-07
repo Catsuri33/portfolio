@@ -1,9 +1,11 @@
+import type { AssetPath } from '$app/types';
+
 export type Certification = {
 	title: string;
 	issuer: string;
 	kind: 'course' | 'certification';
 	issued: string; // ISO date
-	badge: string; // path under static/
+	badge: AssetPath; // path under static/
 	url: string; // public Credly URL
 };
 

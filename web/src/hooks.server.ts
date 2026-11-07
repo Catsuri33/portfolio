@@ -1,5 +1,5 @@
-import type { Handle } from '@sveltejs/kit';
-import { langFromPath } from '$lib/i18n.svelte.js';
+import type { Handle } from '@sveltejs/kit/hooks';
+import { langFromPath } from '#lib/i18n.svelte.js';
 
 export const handle: Handle = ({ event, resolve }) =>
 	resolve(event, {

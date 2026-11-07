@@ -22,7 +22,7 @@ export const projects: Project[] = [
 		title: 'Homelab',
 		tags: ['K3S', 'Hardware', 'Docker', 'Grafana', 'UptimeKuma'],
 		desc: {
-			fr: 'Réalisation d\'un homelab personnel. Montage des composants, installation de Kubernetes, déploiement de services (Grafana, UptimeKuma, Gitea…).',
+			fr: "Réalisation d'un homelab personnel. Montage des composants, installation de Kubernetes, déploiement de services (Grafana, UptimeKuma, Gitea…).",
 			en: 'Personal homelab build: hardware assembly, Kubernetes setup, self-hosted services (Grafana, UptimeKuma, Gitea…).'
 		}
 	},
@@ -31,7 +31,7 @@ export const projects: Project[] = [
 		title: 'Omni',
 		tags: ['TypeScript', 'React', 'Kubernetes', 'GitLab CI/CD'],
 		desc: {
-			fr: 'Projet d\'école : une suite collaborative auto-hébergeable et souveraine, comparable à Proton ou Google Workspace.',
+			fr: "Projet d'école : une suite collaborative auto-hébergeable et souveraine, comparable à Proton ou Google Workspace.",
 			en: 'School project: a self-hostable, sovereign collaborative suite similar to Proton or Google Workspace.'
 		}
 	},
@@ -41,7 +41,7 @@ export const projects: Project[] = [
 		tags: ['Puppeteer', 'Scraping', 'Node.js', 'NPM Package'],
 		github: 'https://github.com/Catsuri33/French-Car-Scraper',
 		desc: {
-			fr: 'Récupérer des informations sur une voiture française à partir de sa plaque d\'immatriculation.',
+			fr: "Récupérer des informations sur une voiture française à partir de sa plaque d'immatriculation.",
 			en: 'Retrieve information about a French car from its licence plate number.'
 		}
 	},

@@ -1,0 +1,5 @@
+{
+	"cleanUrls": true,
+	"directoryListing": false,
+	"redirects": [{ "source": "/projets/:slug", "destination": "/projects/:slug", "type": 301 }]
+}

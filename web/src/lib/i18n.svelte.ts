@@ -1,16 +1,19 @@
-import { base } from '$app/paths';
+import { resolve } from '$app/paths';
 import { page } from '$app/state';
 
 export type Lang = 'fr' | 'en';
 
 const EN_PREFIX = /^\/en(?=\/|$)/;
 
+// resolve('') ends with a slash, while the paths handled here start with one
+const root = () => resolve('').slice(0, -1);
+
 export function langFromPath(pathname: string): Lang {
-	return EN_PREFIX.test(pathname.slice(base.length)) ? 'en' : 'fr';
+	return EN_PREFIX.test(pathname.slice(root().length)) ? 'en' : 'fr';
 }
 
 function localize(target: string, lang: Lang) {
-	return lang === 'fr' ? base + target : `${base}/en${target}`;
+	return lang === 'fr' ? root() + target : `${root()}/en${target}`;
 }
 
 // The URL is the source of truth so that each language is prerendered at its own address
@@ -24,7 +27,7 @@ export const i18n = {
 	},
 	// Current page in the given language
 	alternate(lang: Lang) {
-		return localize(page.url.pathname.slice(base.length).replace(EN_PREFIX, '') || '/', lang);
+		return localize(page.url.pathname.slice(root().length).replace(EN_PREFIX, '') || '/', lang);
 	}
 };
 
@@ -32,9 +35,16 @@ export const t = {
 	fr: {
 		meta: {
 			title: 'Louis Michault - Apprenti Ingénieur DevOps',
-			description: 'Portfolio de Louis Michault, apprenti ingénieur DevOps : projets Kubernetes, infrastructure et développement web, formations et CV.'
+			description:
+				'Portfolio de Louis Michault, apprenti ingénieur DevOps : projets Kubernetes, infrastructure et développement web, formations et CV.'
 		},
-		nav: { experience: 'Parcours', projets: 'Projets', certifications: 'Formations', cv: 'CV', contact: 'Contact' },
+		nav: {
+			experience: 'Parcours',
+			projets: 'Projets',
+			certifications: 'Formations',
+			cv: 'CV',
+			contact: 'Contact'
+		},
 		hero: {
 			role: 'Apprenti Ingénieur DevOps',
 			desc: 'Étudiant en apprentissage à Polytech Montpellier et employé chez Tiria',
@@ -52,7 +62,7 @@ export const t = {
 		},
 		certifications: {
 			title: 'Formations & certifications',
-			subtitle: 'Les formations que j\'ai validées, vérifiables sur Credly.',
+			subtitle: "Les formations que j'ai validées, vérifiables sur Credly.",
 			verify: 'Vérifier sur Credly',
 			kinds: { course: 'Cours', certification: 'Certification' },
 			filters: { all: 'Tous', course: 'Cours', certification: 'Certifications' },
@@ -64,15 +74,20 @@ export const t = {
 			download: 'Télécharger le PDF',
 			open: 'Ouvrir le PDF',
 			viewer_label: 'Aperçu du CV de Louis Michault',
-			fallback: "Votre navigateur ne peut pas afficher le PDF ici. Utilisez les boutons ci-dessus pour l'ouvrir ou le télécharger."
+			fallback:
+				"Votre navigateur ne peut pas afficher le PDF ici. Utilisez les boutons ci-dessus pour l'ouvrir ou le télécharger."
 		},
 		contact: {
 			title: 'Contact',
 			subtitle: "Une idée de projet ? Une opportunité ? N'hésitez pas à me contacter.",
-			name: 'Nom', name_ph: 'Votre nom',
-			email: 'Email', email_ph: 'votre@email.com',
-			message: 'Message', message_ph: 'Votre message',
-			submit: 'Envoyer', submitting: 'Envoi en cours',
+			name: 'Nom',
+			name_ph: 'Votre nom',
+			email: 'Email',
+			email_ph: 'votre@email.com',
+			message: 'Message',
+			message_ph: 'Votre message',
+			submit: 'Envoyer',
+			submitting: 'Envoi en cours',
 			success_title: 'Message envoyé !',
 			success_desc: 'Je vous répondrai dans les plus brefs délais.',
 			error_title: 'Erreur',
@@ -89,9 +104,16 @@ export const t = {
 	en: {
 		meta: {
 			title: 'Louis Michault - DevOps Engineering Apprentice',
-			description: 'Portfolio of Louis Michault, DevOps engineering apprentice: Kubernetes projects, infrastructure and web development, training and resume.'
+			description:
+				'Portfolio of Louis Michault, DevOps engineering apprentice: Kubernetes projects, infrastructure and web development, training and resume.'
 		},
-		nav: { experience: 'Career', projets: 'Projects', certifications: 'Training', cv: 'Resume', contact: 'Contact' },
+		nav: {
+			experience: 'Career',
+			projets: 'Projects',
+			certifications: 'Training',
+			cv: 'Resume',
+			contact: 'Contact'
+		},
 		hero: {
 			role: 'DevOps Engineering Apprentice',
 			desc: 'Apprentice student at Polytech Montpellier, employed at Tiria',
@@ -121,15 +143,20 @@ export const t = {
 			download: 'Download PDF',
 			open: 'Open PDF',
 			viewer_label: "Preview of Louis Michault's resume",
-			fallback: "Your browser can't display the PDF here. Use the buttons above to open or download it."
+			fallback:
+				"Your browser can't display the PDF here. Use the buttons above to open or download it."
 		},
 		contact: {
 			title: 'Contact',
 			subtitle: 'Have a project idea or an opportunity? Feel free to reach out.',
-			name: 'Name', name_ph: 'Your name',
-			email: 'Email', email_ph: 'your@email.com',
-			message: 'Message', message_ph: 'Your message\u2026',
-			submit: 'Send', submitting: 'Sending\u2026',
+			name: 'Name',
+			name_ph: 'Your name',
+			email: 'Email',
+			email_ph: 'your@email.com',
+			message: 'Message',
+			message_ph: 'Your message\u2026',
+			submit: 'Send',
+			submitting: 'Sending\u2026',
 			success_title: 'Message sent!',
 			success_desc: "I'll get back to you as soon as possible.",
 			error_title: 'Error',

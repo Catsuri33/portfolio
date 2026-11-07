@@ -1,5 +1,14 @@
 {
-  "devDependencies": {
-    "@sveltejs/adapter-static": "^3.0.10"
-  }
+	"private": true,
+	"packageManager": "pnpm@12.18.0",
+	"engines": {
+		"node": ">=22.17"
+	},
+	"scripts": {
+		"build": "pnpm install --frozen-lockfile --prod=false && pnpm --filter web build",
+		"start": "serve web/build -l tcp://0.0.0.0:${PORT:-3000} -c ../../serve.json"
+	},
+	"dependencies": {
+		"serve": "^14.2.6"
+	}
 }

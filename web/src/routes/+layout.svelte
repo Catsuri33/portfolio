@@ -1,16 +1,18 @@
 <script lang="ts">
 	import './layout.css';
-	import { base } from '$app/paths';
+	import { asset } from '$app/paths';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
-	import { theme } from '$lib/theme.svelte.js';
-	import { i18n, t } from '$lib/i18n.svelte.js';
+	import { theme } from '#lib/theme.svelte.js';
+	import { i18n, t } from '#lib/i18n.svelte.js';
 
 	let { children } = $props();
 
 	const origin = 'https://louis-michault.fr';
 
-	onMount(() => { theme.init(); });
+	onMount(() => {
+		theme.init();
+	});
 
 	$effect(() => {
 		document.documentElement.lang = i18n.current;
@@ -18,9 +20,12 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href="{base}/favicon.ico" sizes="48x48" />
-	<link rel="icon" href="{base}/favicon.svg" type="image/svg+xml" />
-	<link rel="icon" href="{base}/favicon.png" type="image/png" sizes="192x192" />
+	<link rel="icon" href={asset('favicon.ico')} sizes="48x48" />
+
+	<link rel="icon" href={asset('favicon.svg')} type="image/svg+xml" />
+
+	<link rel="icon" href={asset('favicon.png')} type="image/png" sizes="192x192" />
+
 	{#if !page.error}
 		<link rel="canonical" href="{origin}{i18n.alternate(i18n.current)}" />
 		<link rel="alternate" hreflang="fr" href="{origin}{i18n.alternate('fr')}" />
